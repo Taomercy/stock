@@ -37,6 +37,7 @@ def monitor_task():
 if __name__ == '__main__':
     scheduler = BlockingScheduler(timezone='Asia/Shanghai')
     scheduler.add_job(monitor_task, 'cron', day_of_week='mon-fri', hour=14, minute=30)
+    scheduler.add_job(monitor_task, 'cron', day_of_week='mon-fri', hour=18)
     try:
         print("monitor start ...")
         scheduler.start()
