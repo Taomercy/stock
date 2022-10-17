@@ -1,7 +1,7 @@
 #!/bin/bash
-tag=$(date "+%Y%m%d%H%M%S")
-image_name=taomercy/stock:v1.0-$tag
-docker build -t $image_name .
-docker push stock:$tag
-docker run -id --name=stock-monitor $image_name
-
+build_tag=`git rev-parse --short HEAD').trim()`
+docker build -t taomercy/stock-monitor:${build_tag} .
+docker push taomercy/stock-monitor:${build_tag}
+docker ps -a | grep stock-monitor | awk {'print $1'} | xargs docker stop
+docker ps -a | grep stock-monitor | awk {'print $1'} | xargs docker rm
+docker run -id --name=stock-monitor taomercy/stock-monitor:${build_tag}
