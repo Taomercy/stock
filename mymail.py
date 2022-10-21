@@ -31,6 +31,7 @@ def send_mail(html):
 
 
 class MailTable(object):
+    have_data = False
     html = None
     table_head = None
     td_head = None
@@ -47,6 +48,7 @@ class MailTable(object):
         self.html += self.td_head
 
     def add_tr(self, stock_name, today_pct_chg, day5_pct_chg):
+        self.have_data = True
         td = """
                     <td width=64 nowrap style='width:48.0pt;border:solid windowtext 1.0pt;border-top:none;background:white;padding:0in 5.4pt 0in 5.4pt;height:15.65pt'><p class=MsoNormal><span style='color:black'>{}<o:p></o:p></span></p></td>
                     <td width=96 nowrap style='width:1.0in;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;background:white;padding:0in 5.4pt 0in 5.4pt;height:15.65pt'><p class=MsoNormal><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>{}<o:p></o:p></span></p></td>

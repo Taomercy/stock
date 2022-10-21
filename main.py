@@ -30,14 +30,16 @@ def monitor_task():
     mt = MailTable()
     for stock in monitor_stocks:
         check(pro, stock, mt)
-    if mt.html:
+    if mt.have_data:
+	print("have data")
         send_mail(mt.get_html())
 
 
 if __name__ == '__main__':
     scheduler = BlockingScheduler(timezone='Asia/Shanghai')
-    scheduler.add_job(monitor_task, 'cron', day_of_week='mon-fri', hour=14, minute=30)
+    #scheduler.add_job(monitor_task, 'cron', day_of_week='mon-fri', hour=14, minute=30)
     scheduler.add_job(monitor_task, 'cron', day_of_week='mon-fri', hour=18)
+    #scheduler.add_job(monitor_task, 'interval', seconds=5)
     try:
         print("monitor start ...")
         scheduler.start()
