@@ -1,4 +1,4 @@
-node('jenkins-jnlp') {
+node('docker-build') {
     stage('Clone') {
         sh "rm -rf stock"
         sh "git clone https://gitlab.com/Taomercy/stock.git"
