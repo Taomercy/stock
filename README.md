@@ -1,3 +1,2 @@
 # stock
-
-abc
+stock
