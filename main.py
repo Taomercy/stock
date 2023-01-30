@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 import tushare as ts
 import datetime
+import chinese_calendar
 from mymail import send_mail, MailTable
 from settings import tushare_token
 from utils import get_stock_data_from_yaml
@@ -32,7 +33,9 @@ def monitor_task():
         check(pro, stock, mt)
     if mt.have_data:
 	print("have data")
-        send_mail(mt.get_html())
+	now = datetime.datetime.now()
+	if chinese_calendar.is_workday():
+            send_mail(mt.get_html())
 
 
 if __name__ == '__main__':
