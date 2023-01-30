@@ -32,10 +32,10 @@ def monitor_task():
     for stock in monitor_stocks:
         check(pro, stock, mt)
     if mt.have_data:
-	print("have data")
-	now = datetime.datetime.now()
-	if chinese_calendar.is_workday():
-            send_mail(mt.get_html())
+		print("have data")
+		now = datetime.datetime.now()
+		if chinese_calendar.is_workday(now):
+			send_mail(mt.get_html())
 
 
 if __name__ == '__main__':
