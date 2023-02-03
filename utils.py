@@ -29,7 +29,7 @@ class MailTable(object):
                     <td width=96 valign=bottom style='width:1.0in;border:solid windowtext 1.0pt;border-left:none;background:#17375D;padding:0in 5.4pt 0in 5.4pt;height:15.0pt'><p class=MsoNormal><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;color:white'>今日涨跌幅<o:p></o:p></span></b></p></td>
                     <td width=119 nowrap valign=bottom style='width:89.0pt;border:solid windowtext 1.0pt;border-left:none;background:#17375D;padding:0in 5.4pt 0in 5.4pt;height:15.0pt'><p class=MsoNormal><b><span style='font-size:10.0pt;font-family:"Arial",sans-serif;color:white'>5日涨跌幅<o:p></o:p></span></b></p></td>
         """
-        self.html = "<p>Hi,</p><p>检测到今日以下股票涨跌幅大于5%"
+        self.html = "<p>Hi,</p><p>检测到今日以下股票涨跌幅大于5%, 或者5日累计涨跌大于10%"
         self.html += self.table_head
         self.html += self.td_head
 
