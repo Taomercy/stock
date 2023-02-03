@@ -19,8 +19,8 @@ def check(pro, stock, mt):
     print("股票名称：", stock["name"])
     print("今日涨跌幅：", df["pct_chg"][0])
     print("5日涨跌幅:", sum(df["pct_chg"][:5]))
-    if abs(today_pct_chg) > 5:
-        print("今日涨跌幅大于5%， 发送邮件")
+    if abs(today_pct_chg) > 5 or abs(sum(df["pct_chg"][:5])) > 10:
+        print("今日涨跌幅大于5%，或者5日累计大于10%， 发送邮件")
         mt.add_tr(stock["name"], df["pct_chg"][0], sum(df["pct_chg"][:5]))
     print("============================")
 
