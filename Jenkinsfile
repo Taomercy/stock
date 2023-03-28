@@ -7,7 +7,8 @@ node('docker-build') {
                 build_tag = sh(returnStdout: true, script: 'cd stock;git rev-parse --short HEAD').trim()
                 println "build_tag: ${build_tag}"
             }
-
+        }
+        ws("stock"){
             stage('Build') {
                 sh "docker build -t taomercy/stock-monitor:${build_tag} ."
             }
